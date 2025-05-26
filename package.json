@@ -22,7 +22,7 @@
     "hono"
   ],
   "author": "",
-  "license": "ISC",
+  "license": "MIT",
   "dependencies": {
     "@hono/node-server": "^1.8.2",
     "graphql": "^16.8.1",
