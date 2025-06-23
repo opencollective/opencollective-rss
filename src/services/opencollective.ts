@@ -7,6 +7,9 @@ const updatesQuery = gql`
       id
       name
       slug
+      features {
+        UPDATES
+      }
       updates(
         limit: 300
         onlyPublishedUpdates: true
@@ -38,6 +41,12 @@ export class OpenCollectiveService {
         updatesQuery,
         { accountSlug }
       );
+
+      const featureStatus = response.account?.features?.UPDATES;
+      if (featureStatus !== 'ACTIVE' && featureStatus !== 'AVAILABLE') {
+        throw new Error('Updates are not available for this account');
+      }
+
       return response.account;
     } catch (error: any) {
       if (
