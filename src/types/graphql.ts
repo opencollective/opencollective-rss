@@ -1818,6 +1818,7 @@ export type LastCommentBy =
 /** Status for a legal document */
 export type LegalDocumentRequestStatus =
   | 'ERROR'
+  | 'EXPIRED'
   | 'INVALID'
   | 'NOT_REQUESTED'
   | 'RECEIVED'
@@ -2871,6 +2872,7 @@ export type VendorCreateInput = {
   payoutMethod: InputMaybe<PayoutMethodInput>;
   tags: InputMaybe<Array<InputMaybe<Scalars['NonEmptyString']['input']>>>;
   vendorInfo: InputMaybe<VendorInfoInput>;
+  visibleToAccounts: InputMaybe<Array<InputMaybe<AccountReferenceInput>>>;
 };
 
 export type VendorEditInput = {
@@ -2888,6 +2890,7 @@ export type VendorEditInput = {
   slug: InputMaybe<Scalars['String']['input']>;
   tags: InputMaybe<Array<InputMaybe<Scalars['NonEmptyString']['input']>>>;
   vendorInfo: InputMaybe<VendorInfoInput>;
+  visibleToAccounts: InputMaybe<Array<InputMaybe<AccountReferenceInput>>>;
 };
 
 /** Some context about the vendor */
@@ -2979,4 +2982,4 @@ export type GetUpdatesQueryVariables = Exact<{
 }>;
 
 
-export type GetUpdatesQuery = { account: { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | null };
+export type GetUpdatesQuery = { account: { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | { id: string, name: string | null, slug: string, features: { UPDATES: CollectiveFeatureStatus | null }, updates: { nodes: Array<{ id: string, title: string, html: string | null, createdAt: string, publishedAt: string | null, slug: string }> | null } } | null };
