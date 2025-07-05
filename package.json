@@ -39,7 +39,7 @@
     "@types/rss": "^0.0.32",
     "@typescript-eslint/eslint-plugin": "^8.32.1",
     "@typescript-eslint/parser": "^8.32.1",
-    "eslint": "^8.57.0",
+    "eslint": "^9.0.0",
     "prettier": "^3.2.5",
     "supertest": "^7.1.1",
     "tsx": "^4.7.1",
