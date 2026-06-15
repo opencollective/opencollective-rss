@@ -42,7 +42,11 @@ export class OpenCollectiveService {
         { accountSlug }
       );
 
-      const featureStatus = response.account?.features?.UPDATES;
+      if (!response.account) {
+        return null;
+      }
+
+      const featureStatus = response.account.features?.UPDATES;
       if (featureStatus !== 'ACTIVE' && featureStatus !== 'AVAILABLE') {
         throw new Error('Updates are not available for this account');
       }
@@ -53,7 +57,7 @@ export class OpenCollectiveService {
         error?.response?.status === 404 ||
         error?.response?.errors?.some((e: any) => e.message === 'Account not found')
       ) {
-        throw new Error('Account not found');
+        throw new Error('Account not found', { cause: error });
       }
       throw error;
     }
