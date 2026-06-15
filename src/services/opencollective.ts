@@ -42,7 +42,11 @@ export class OpenCollectiveService {
         { accountSlug }
       );
 
-      const featureStatus = response.account?.features?.UPDATES;
+      if (!response.account) {
+        return null;
+      }
+
+      const featureStatus = response.account.features?.UPDATES;
       if (featureStatus !== 'ACTIVE' && featureStatus !== 'AVAILABLE') {
         throw new Error('Updates are not available for this account');
       }
