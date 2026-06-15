@@ -3,9 +3,11 @@ import { OpenCollectiveService } from './opencollective.js';
 import { GraphQLClient } from 'graphql-request';
 
 vi.mock('graphql-request', () => ({
-  GraphQLClient: vi.fn().mockImplementation(() => ({
-    request: vi.fn(),
-  })),
+  GraphQLClient: vi.fn(
+    class MockGraphQLClient {
+      request = vi.fn();
+    }
+  ),
   gql: vi.fn((strings) => strings.join('')),
 }));
 

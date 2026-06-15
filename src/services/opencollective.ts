@@ -57,7 +57,7 @@ export class OpenCollectiveService {
         error?.response?.status === 404 ||
         error?.response?.errors?.some((e: any) => e.message === 'Account not found')
       ) {
-        throw new Error('Account not found');
+        throw new Error('Account not found', { cause: error });
       }
       throw error;
     }
