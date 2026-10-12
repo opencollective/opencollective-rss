@@ -6,14 +6,20 @@
   "main": "dist/index.js",
   "scripts": {
     "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "build": "npm run turbo -- run build:compile",
     "start": "node dist/index.js",
     "format": "prettier --write \"src/**/*.ts\"",
     "test": "vitest run",
     "test:watch": "vitest watch",
     "codegen": "graphql-codegen",
     "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "lint:fix": "eslint . --fix",
+    "format:check": "prettier --check \"src/**/*.ts\"",
+    "type:check": "tsc --noEmit",
+    "dev:environment": "npm run dev -- \"$OC_DEV_ENV_RSS\"",
+    "turbo": "turbo --single-package --root-turbo-json=turbo.standalone.json",
+    "build:compile": "tsc",
+    "build:clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\""
   },
   "keywords": [
     "opencollective",
@@ -46,6 +52,8 @@
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.0",
-    "vitest": "^4.1.9"
-  }
+    "vitest": "^4.1.9",
+    "turbo": "2.11.7"
+  },
+  "packageManager": "npm@11.19.0"
 }
