@@ -1,39 +1,23 @@
 {
   "$schema": "https://turborepo.dev/schema.json",
-  "extends": [
-    "//"
-  ],
+  "extends": ["//"],
   "tasks": {
-    "dev": {
+    "dev:task": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ],
+      "passThroughEnv": ["*"],
       "persistent": true
-    },
-    "build": {
-      "cache": false,
-      "passThroughEnv": [
-        "*"
-      ]
     },
     "start": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ],
+      "passThroughEnv": ["*"],
       "persistent": true,
-      "dependsOn": [
-        "build"
-      ]
+      "dependsOn": ["build:compile"]
     },
-    "format": {
+    "format:task": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ]
+      "passThroughEnv": ["*"]
     },
-    "test": {
+    "test:task": {
       "inputs": [
         "$TURBO_DEFAULT$",
         "package-lock.json",
@@ -69,21 +53,15 @@
         "TZ",
         "OC_LOCKFILE_HASH_RSS"
       ],
-      "outputs": [
-        "coverage/**",
-        "junit.xml",
-        "test-results.xml"
-      ],
+      "outputs": ["coverage/**", "junit.xml", "test-results.xml"],
       "cache": true
     },
-    "test:watch": {
+    "test:watch:task": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ],
+      "passThroughEnv": ["*"],
       "persistent": true
     },
-    "lint": {
+    "lint:task": {
       "inputs": [
         "$TURBO_DEFAULT$",
         "package-lock.json",
@@ -101,24 +79,15 @@
         "!.prettiercache",
         "!_sidebar.md"
       ],
-      "env": [
-        "CI",
-        "NODE_ENV",
-        "OC_ENV",
-        "TZ",
-        "NODE_OPTIONS",
-        "OC_LOCKFILE_HASH_RSS"
-      ],
+      "env": ["CI", "NODE_ENV", "OC_ENV", "TZ", "NODE_OPTIONS", "OC_LOCKFILE_HASH_RSS"],
       "outputs": [],
       "cache": true
     },
-    "lint:fix": {
+    "lint:fix:task": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ]
+      "passThroughEnv": ["*"]
     },
-    "format:check": {
+    "format:check:task": {
       "inputs": [
         "$TURBO_DEFAULT$",
         "package-lock.json",
@@ -136,18 +105,11 @@
         "!.prettiercache",
         "!_sidebar.md"
       ],
-      "env": [
-        "CI",
-        "NODE_ENV",
-        "OC_ENV",
-        "TZ",
-        "NODE_OPTIONS",
-        "OC_LOCKFILE_HASH_RSS"
-      ],
+      "env": ["CI", "NODE_ENV", "OC_ENV", "TZ", "NODE_OPTIONS", "OC_LOCKFILE_HASH_RSS"],
       "outputs": [],
       "cache": true
     },
-    "type:check": {
+    "type:check:task": {
       "inputs": [
         "$TURBO_DEFAULT$",
         "package-lock.json",
@@ -165,29 +127,18 @@
         "!.prettiercache",
         "!_sidebar.md"
       ],
-      "env": [
-        "CI",
-        "NODE_ENV",
-        "OC_ENV",
-        "TZ",
-        "NODE_OPTIONS",
-        "OC_LOCKFILE_HASH_RSS"
-      ],
+      "env": ["CI", "NODE_ENV", "OC_ENV", "TZ", "NODE_OPTIONS", "OC_LOCKFILE_HASH_RSS"],
       "outputs": [],
       "cache": true
     },
     "dev:environment": {
       "cache": false,
       "persistent": true,
-      "passThroughEnv": [
-        "*"
-      ]
+      "passThroughEnv": ["*"]
     },
     "build:clean": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ]
+      "passThroughEnv": ["*"]
     },
     "build:compile": {
       "inputs": [
@@ -216,21 +167,13 @@
         "BABEL_ENV",
         "OC_LOCKFILE_HASH_RSS"
       ],
-      "outputs": [
-        "dist/**",
-        "!dist/.next/cache/**",
-        "!dist/.next/dev/**"
-      ],
+      "outputs": ["dist/**", "!dist/.next/cache/**", "!dist/.next/dev/**"],
       "cache": true,
-      "dependsOn": [
-        "build:clean"
-      ]
+      "dependsOn": ["build:clean"]
     },
-    "codegen": {
+    "codegen:task": {
       "cache": false,
-      "passThroughEnv": [
-        "*"
-      ]
+      "passThroughEnv": ["*"]
     }
   }
 }
