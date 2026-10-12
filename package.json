@@ -5,15 +5,30 @@
   "type": "module",
   "main": "dist/index.js",
   "scripts": {
-    "dev": "tsx watch src/index.ts",
-    "build": "tsc",
+    "dev": "npm run turbo -- run dev:task --",
+    "build": "npm run turbo -- run build:compile",
     "start": "node dist/index.js",
-    "format": "prettier --write \"src/**/*.ts\"",
-    "test": "vitest run",
-    "test:watch": "vitest watch",
-    "codegen": "graphql-codegen",
-    "lint": "eslint .",
-    "lint:fix": "eslint . --fix"
+    "format": "npm run turbo -- run format:task --",
+    "test": "npm run turbo -- run test:task --",
+    "test:watch": "npm run turbo -- run test:watch:task --",
+    "codegen": "npm run turbo -- run codegen:task --",
+    "lint": "npm run turbo -- run lint:task --",
+    "lint:fix": "npm run turbo -- run lint:fix:task --",
+    "format:check": "npm run turbo -- run format:check:task --",
+    "type:check": "npm run turbo -- run type:check:task --",
+    "dev:environment": "npm run dev:task -- \"$OC_DEV_ENV_RSS\"",
+    "turbo": "turbo --skip-infer --single-package --root-turbo-json=turbo.standalone.json",
+    "build:compile": "tsc",
+    "build:clean": "node -e \"require('fs').rmSync('dist', {recursive: true, force: true})\"",
+    "dev:task": "tsx watch src/index.ts",
+    "format:task": "prettier --write \"src/**/*.ts\"",
+    "test:task": "vitest run",
+    "test:watch:task": "vitest watch",
+    "codegen:task": "graphql-codegen",
+    "lint:task": "eslint .",
+    "lint:fix:task": "eslint . --fix",
+    "format:check:task": "prettier --check \"src/**/*.ts\"",
+    "type:check:task": "tsc --noEmit"
   },
   "keywords": [
     "opencollective",
@@ -46,6 +61,8 @@
     "tsx": "^4.22.4",
     "typescript": "^6.0.3",
     "typescript-eslint": "^8.61.0",
-    "vitest": "^4.1.9"
-  }
+    "vitest": "^4.1.9",
+    "turbo": "2.11.7"
+  },
+  "packageManager": "npm@11.19.0"
 }
